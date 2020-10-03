@@ -56,7 +56,6 @@ function Login() {
         let isFieldValid = true;
         if (e.target.name === 'email') {
             isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
-
         }
         if (e.target.name === 'password') {
             const isPasswordValid = e.target.value.length > 6;

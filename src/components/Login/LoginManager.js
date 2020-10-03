@@ -20,37 +20,26 @@ export const handleGoogleSignIn = () => {
           email: email,
           photo: photoURL,
           success: true
-        }
+        };
         return signedInUser
-
       })
       .catch(err => {
         console.log(err);
         console.log(err.message);
-
       })
   }
-
-
   export const handleFbLogin= ()=>{
     const fbProvider = new firebase.auth.FacebookAuthProvider();
    return firebase.auth().signInWithPopup(fbProvider).then(function(result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var token = result.credential.accessToken;
-      // The signed-in user info.
       var user = result.user;
       user.success = true;
       return user;
-      // ...
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
+      console.log(errorCode, errorMessage)
     });
   }
 
@@ -62,13 +51,12 @@ export const handleGoogleSignIn = () => {
           name: '',
           email: '',
           password: '',
-          photo: ''
+          photo: '',
+          success: false
         }
         return signedOutUser
-
-      })
-      .catch(err => {
-
+      }).catch(err => {
+        console.log(err)
       })
   }
 
@@ -80,7 +68,6 @@ export const handleGoogleSignIn = () => {
       newUserInfo.success = true;
       updateUserName(name);
       return newUserInfo;
-
     })
     .catch(error => {
       // Handle Errors here.
@@ -98,10 +85,8 @@ export const handleGoogleSignIn = () => {
       newUserInfo.error = '';
       newUserInfo.success = true;
       return newUserInfo;
-     
     })
     .catch(function (error) {
-      // Handle Errors here.
       const newUserInfo = {};
       newUserInfo.error = error.message;
       newUserInfo.success = false;

@@ -8,7 +8,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
 } from "react-router-dom";
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
@@ -24,7 +23,9 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
   return (
     <UserContext.Provider value = {[loggedInUser, setLoggedInUser]}>
-      <h3>Email:{loggedInUser.email}</h3>
+      <h1> Welcome <span style={{color: 'lime'}}>{loggedInUser.name}</span> </h1>
+      <h5>Your logged-in email: <span style={{color: 'brown'}}>{loggedInUser.email}</span> </h5>
+      <img style={{ width: '100px', borderRadius: '100px' }} src={loggedInUser.photo} alt="" />
       
       <Router>
       <Header></Header>
