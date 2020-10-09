@@ -6,10 +6,16 @@ import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
 
+
+
+  
+  
+
 const Shop = () => {
     // const first10 = fakeData.slice(0, 10);
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    document.title = "All products"
 
     useEffect(() => {
         fetch('https://desolate-island-15765.herokuapp.com/products')
@@ -51,9 +57,14 @@ const Shop = () => {
         addToDatabaseCart(product.key, count)
     }
 
+    
+
     return (
         <div className="twin-container">
             <div className="product-container">
+                {
+                    products.length === 0 &&  <img src="https://miro.medium.com/max/1600/0*ptDX0HfJCYpo9Pcs.gif" alt=""/>
+                }
 
                 {
                     products.map(pd => <Product
